@@ -7,6 +7,8 @@ import StepSecond from "@/components/stepSecond"
 import StepThird from "@/components/stepThird"
 import Success from "@/components/Success"
 
+import StepCard from "@/components/Step"
+
 const Form = (props) => {
     const { } = props;
 
@@ -30,8 +32,8 @@ const Form = (props) => {
     }
 
     const stepNext = () => {
-        if (stepState !== 0) {
-            setStepState((prevStep) => (prevStep - 1))
+        if (stepState < 3) {
+            setStepState((prevStep) => (prevStep + 1));
         }
     }
 
@@ -40,10 +42,15 @@ const Form = (props) => {
 
     return (
         <div className="w-screen h-screen bg-[#F9F7F7] p-2 flex justify-between gap-2">
-            <div className="bg-slate-900 w-full h-full rounded-[20px] border">
+            <div className="rightSide bg-[url('/imgs/bg.png')] bg-center bg-cover w-full h-full rounded-[20px] flex justify-center items-center relative">
+                <div className="absolute bottom-16 flex flex-col gap-4">
+                    <StepCard stepNum={'1'} stepDesc={'Setup name, username'} priColor={'white'} secColor={'black'} thirdColor={'black'} />
+                    <StepCard stepNum={'2'} stepDesc={'Setup, personal informations'} priColor={'#232323'} secColor={'#454545'} thirdColor={'#c1c1c1'} />
+                    <StepCard stepNum={'3'} stepDesc={'Setup date, profile'} priColor={'#232323'} secColor={'#454545'} thirdColor={'#c1c1c1'} />
+                </div>
             </div>
             <div className="bg-[#F9F7F7] w-full h-full rounded-[20px] border flex justify-center items-center flex-col">
-                <Step stepBack={stepBack} stepNext={stepNext} SetInputValue={setInputValue} />
+                <Step stepBack={stepBack} stepNext={stepNext} setInputValue={setInputValue} inputValue={inputValue} />
             </div>
         </div>
 
