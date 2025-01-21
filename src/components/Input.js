@@ -3,7 +3,10 @@ const Input = (props) => {
 
     return (
         <div className="w-full flex flex-col mt-8">
-            <p className="text-[black] text-sm mb-2.5">{inputLabel}</p>
+            <div className="flex flex-row items-center mb-2">
+                <p className="text-[black] text-sm">{inputLabel}</p>
+                {error && <p className="text-[red] text-base ml-2">*</p>}
+            </div>
             <div className="w-full h-14 border rounded-[10px] flex justify-start items-center">
                 <img src={inputIcon} alt="icon" width={25} className="ml-4" />
                 <div className="h-4/6 border border-[0.8px] ml-4"></div>

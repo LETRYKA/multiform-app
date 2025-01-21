@@ -36,6 +36,7 @@ const Form = (props) => {
     }
 
     console.log(inputValue)
+    console.log(stepState)
 
     return (
         <div className="w-screen h-screen bg-[#F9F7F7] p-2 flex justify-between gap-2">

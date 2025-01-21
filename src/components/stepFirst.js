@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Input from "@/components/Input"
+import Button from "@/components/Button"
 
 const StepFirst = (props) => {
     const { stepBack, stepNext, setInputValue } = props;
@@ -17,6 +18,9 @@ const StepFirst = (props) => {
             <p className="text-[grey] font-regular text-base">Please provide all current information accurately.</p>
             <div className="w-full flex flex-row gap-4">
                 <Input inputLabel={'First Name'} inputIcon={'/imgs/lock.svg'} placeHolder={'eg. John'} error={errorHandler} errorMessage={'Нэрээ оруулна уу!'} />
+            </div>
+            <div className="w-full flex flex-row gap-4 mt-10">
+                <Button stepNext={stepNext} btnLabel={'Next'} priColor={'black'} secColor={'white'} />
             </div>
         </div>
     )
