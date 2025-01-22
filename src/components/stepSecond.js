@@ -16,7 +16,7 @@ const StepSecond = (props) => {
     return (
         <div className="w-[500px] min-w-[100px] flex flex-col justify-center items-center">
             <img src="/imgs/logo.png" alt="" width={60} height={60} />
-            <h1 className="text-[black] font-semibold text-3xl mt-8">Join Us!</h1>
+            <h1 className="text-[black] font-semibold text-3xl mt-8">Second Step</h1>
             <p className="text-[grey] font-regular text-base">Please provide all current information accurately.</p>
             <div className="w-full flex flex-row gap-4">
                 <Input

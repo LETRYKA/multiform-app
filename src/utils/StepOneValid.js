@@ -30,17 +30,30 @@
 // }
 
 export const isStepOneValid = (data) => {
-    console.log('test')
-    const { firstName } = data;
+    console.log('test');
+    const { firstName, lastName, userName} = data;
     const errors = {};
     let isValid = true;
 
+    // Validate firstName
     if (firstName.length <= 1) {
-        errors.firstName = "Нэрээ оруулна уу!"
+        errors.firstName = "Please enter your First Name";
         isValid = false;
     }
 
-    console.log(isValid, errors)
+    // Validate lastName
+    if (lastName.length <= 1) {
+        errors.lastName = "Please enter your Last Name";
+        isValid = false;
+    }
 
-    return { isValid, errors }
-}
+     // Validate lastName
+     if (userName.length <= 1) {
+        errors.userName = "Please enter your Username";
+        isValid = false;
+    }
+
+    console.log(isValid, errors);
+
+    return { isValid, errors };
+};
