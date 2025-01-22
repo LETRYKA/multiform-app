@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "motion/react"
 import StepFirst from "@/components/stepFirst"
 import StepSecond from "@/components/stepSecond"
 import StepThird from "@/components/stepThird"
 import Success from "@/components/Success"
 
 import StepCard from "@/components/Step"
+import Validation from "@/utils/Validation";
 
 const Form = (props) => {
     const { } = props;
@@ -23,6 +25,14 @@ const Form = (props) => {
         date: "",
     })
 
+    const [errors, setErrors] = useState({});
+
+    function handleValidation(event) {
+        event.preventDefault();
+        const validationErrors = Validation(inputValue);
+        setErrors(validationErrors);
+    }
+
     const Step = [StepFirst, StepSecond, StepThird, Success][stepState];
 
     const stepBack = () => {
@@ -37,13 +47,16 @@ const Form = (props) => {
         }
     }
 
-    console.log(inputValue)
-    console.log(stepState)
+    console.log(errors)
 
     return (
         <div className="w-screen h-screen bg-[#F9F7F7] p-2 flex justify-between gap-2">
             <div className="rightSide bg-[url('/imgs/bg.png')] bg-center bg-cover w-full h-full rounded-[20px] flex justify-center items-center relative">
                 <div className="absolute bottom-16 flex flex-col gap-4">
+                    <form onSubmit={handleValidation}>
+                        <button type="submit">Validate</button>
+                        {errors.firstName && <p style={{ color: 'red' }}>{errors.firstName}</p>}
+                    </form>
                     <StepCard stepNum={'1'} stepDesc={'Setup name, username'} priColor={'white'} secColor={'black'} thirdColor={'black'} />
                     <StepCard stepNum={'2'} stepDesc={'Setup, personal informations'} priColor={'#232323'} secColor={'#454545'} thirdColor={'#c1c1c1'} />
                     <StepCard stepNum={'3'} stepDesc={'Setup date, profile'} priColor={'#232323'} secColor={'#454545'} thirdColor={'#c1c1c1'} />
