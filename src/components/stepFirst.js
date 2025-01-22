@@ -3,10 +3,31 @@ import Image from "next/image";
 import Input from "@/components/Input"
 import Button from "@/components/Button"
 
-const StepFirst = (props) => {
-    const { stepNext, setInputValue, inputValue } = props;
+import { isStepOneValid } from '@/utils/StepOneValid'
 
-    const { error, setError } = useState(false);
+const StepFirst = (props) => {
+    const { stepNext, setInputValue, inputValue, errors, handleError, clearError } = props;
+
+    const error = false;
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setInputValue((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+        clearError(name);
+    };
+
+    const handleFormNextStep = () => {
+        const { isValid, errors } = isStepOneValid(inputValue);
+        if (isValid) {
+            stepNext();
+        } else {
+            handleError(errors);
+        }
+    };
+
 
     return (
         <div className="w-[500px] min-w-[100px] flex flex-col justify-center items-center">
@@ -20,15 +41,11 @@ const StepFirst = (props) => {
                     placeHolder={"eg. John"}
                     value={inputValue.firstName}
                     name="firstName"
-                    onChange={(name, value) => {
-                        setInputValue((prev) => ({ ...prev, [name]: value }));
-
-                    }}
-                    error={error}
-                    errorMessage={'Нэрээ оруулна уу!'} />
+                    handleChange={handleChange}
+                    errors={errors} />
             </div>
             <div className="w-full flex flex-row gap-4 mt-10">
-                <Button stepNext={stepNext} btnLabel={'Next'} priColor={'black'} secColor={'white'} />
+                <Button stepNext={stepNext} btnLabel={'Next'} priColor={'black'} secColor={'white'} handleFormNextStep={handleFormNextStep} />
             </div>
         </div>
     )
