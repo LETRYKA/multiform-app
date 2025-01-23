@@ -1,9 +1,9 @@
 import Input from "@/components/Input"
 import Button from "@/components/Button"
-import Lock from "@/icons/lock";
+import Date from "@/icons/date";
+import Upload from "@/icons/upload";
 import { isStepThirdValid } from '@/utils/StepThirdValid'
 
-import User from "@/icons/user";
 import { useState } from "react";
 
 const StepThird = (props) => {
@@ -54,16 +54,34 @@ const StepThird = (props) => {
             <p className="text-[grey] font-regular text-base mt-1">Please provide all current information accurately.</p>
             <div className="w-full flex flex-row gap-4 mt-6">
                 <Input
-                    inputLabel={"Email"}
+                    inputLabel={"Date of Birth"}
                     confirmShowHandler={confirmShowHandler}
                     showHandler={showHandler}
-                    InputIcon={<User />}
-                    placeHolder={"eg. your@mail.com"}
-                    value={inputValue.email}
-                    name="email"
+                    InputIcon={<Date />}
+                    placeHolder={""}
+                    value={inputValue.dateBirth}
+                    name="dateBirth"
                     handleChange={handleChange}
                     errors={errors}
-                    type={"text"} />
+                    type={"date"} />
+            </div>
+            <div className="w-full">
+                <p className="text-[black] text-sm mt-6">Profile Image</p>
+                <div className="flex items-center justify-center w-full mt-3">
+                    <label for="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-transparent">
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                            <Upload />
+                            <p className="mb-2 text-sm text-[black] font-semibold mt-4">Drop your file here, or <span className="text-[#3d4bcb] underline">Browse</span></p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG</p>
+                        </div>
+                        <input onChange={handleChange} name="profileImg" value={inputValue.profileImg} id="dropzone-file" type="file" className="hidden" />
+                    </label>
+                </div>
+                {
+                    errors.profileImg && errors.profileImg.length > 0 && (
+                        <p className="text-[red] text-xs mt-2">{errors[name]}</p>
+                    )
+                }
             </div>
             <div className="w-full flex flex-row gap-4 mt-10">
                 <Button step={stepBack} btnLabel={'Back'} priColor={'white'} secColor={'black'} handleFormNextStep={stepBack} />

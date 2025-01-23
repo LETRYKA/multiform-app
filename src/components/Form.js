@@ -7,6 +7,9 @@ import StepThird from "@/components/stepThird"
 import Success from "@/components/Success"
 import StepCard from "@/components/Step"
 
+import { AnimatePresence } from "motion/react"
+import * as motion from "motion/react-client"
+
 const Form = (props) => {
     const { } = props;
     const [stepState, setStepState] = useState(0);
@@ -62,7 +65,7 @@ const Form = (props) => {
     }
 
     // Step Indicator
-    console.log(stepState)
+    console.log(inputValue)
 
     const stepIndicatorHandler = () => {
         setStepState(2)
@@ -88,6 +91,12 @@ const Form = (props) => {
         console.log(JSON.parse(data))
     }, []);
 
+    const animationVariants = {
+        enter: { opacity: 0, x: 100 },
+        center: { opacity: 1, x: 0 },
+        exit: { opacity: 0, x: -100 }
+    };
+
     return (
         <div className="w-screen h-screen bg-[#F9F7F7] p-2 flex justify-between gap-2">
             <div className="rightSide relative overflow-hidden bg-[url('/imgs/bg.png')] bg-center bg-cover w-full h-full rounded-[20px] flex justify-center items-center">
@@ -100,8 +109,21 @@ const Form = (props) => {
                     <StepCard stepNum={3} stepDesc={'Setup date, profile'} priColor={'#232323'} secColor={'#454545'} thirdColor={'#c1c1c1'} />
                 </div>
             </div>
+
             <div className="bg-[#F9F7F7] w-full h-full rounded-[20px] border flex justify-center items-center flex-col shadow-lg">
-                <Step stepBack={stepBack} stepNext={stepNext} setInputValue={setInputValue} inputValue={inputValue} errors={formError} handleError={handleError} clearError={clearError} />
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={Step}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        variants={animationVariants}
+                        transition={{ duration: 0.5 }}>
+                        <div>
+                            <Step stepBack={stepBack} stepNext={stepNext} setInputValue={setInputValue} inputValue={inputValue} errors={formError} handleError={handleError} clearError={clearError} />
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
             </div>
         </div>
 

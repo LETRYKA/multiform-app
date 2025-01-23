@@ -2,16 +2,18 @@
 
 export const isStepThirdValid = (data) => {
 
-    const { email, phoneNumber, password, confirmPassword } = data;
+    const { dateBirth, profileImg } = data;
     const errors = {};
     let isValid = true;
 
     // Validate Email
-    if (email === "") {
-        errors.email = "Please enter your Email address!";
+    if (dateBirth === "") {
+        errors.dateBirth = "Please enter your Date of Birth!";
         isValid = false;
-    } else if (!emailPattern.test(email)) {
-        errors.email = "Please enter correct Email address!";
+    }
+
+    if (profileImg === "") {
+        errors.profileImg = "Test"
         isValid = false;
     }
 
