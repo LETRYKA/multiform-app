@@ -31,25 +31,34 @@
 
 export const isStepOneValid = (data) => {
     console.log('test');
-    const { firstName, lastName, userName} = data;
+    const { firstName, lastName, userName } = data;
     const errors = {};
     let isValid = true;
 
     // Validate firstName
-    if (firstName.length <= 1) {
-        errors.firstName = "Please enter your First Name";
+    if (firstName === "") {
+        errors.firstName = "Please enter your First Name!";
+        isValid = false;
+    } else if (firstName.length <= 1) {
+        errors.firstName = "Please enter correct First Name!";
         isValid = false;
     }
 
     // Validate lastName
-    if (lastName.length <= 1) {
-        errors.lastName = "Please enter your Last Name";
+    if (lastName === "") {
+        errors.lastName = "Please enter your Last Name!";
+        isValid = false;
+    } else if (lastName.length <= 1) {
+        errors.lastName = "Please enter correct Last Name!";
         isValid = false;
     }
 
-     // Validate lastName
-     if (userName.length <= 1) {
-        errors.userName = "Please enter your Username";
+    // Validate Username
+    if (userName === "") {
+        errors.userName = "Please enter your Username!";
+        isValid = false;
+    } else if (userName.length <= 1) {
+        errors.userName = "Please enter correct Username!";
         isValid = false;
     }
 

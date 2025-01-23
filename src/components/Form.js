@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import StepFirst from "@/components/stepFirst"
 import StepSecond from "@/components/stepSecond"
 import StepThird from "@/components/stepThird"
 import Success from "@/components/Success"
-
 import StepCard from "@/components/Step"
 
 const Form = (props) => {
@@ -28,7 +26,6 @@ const Form = (props) => {
         dateBirth: "",
         profileImg: "",
     })
-
     const [formError, setFormError] = useState({
         firstName: "",
         lastName: "",
@@ -40,10 +37,9 @@ const Form = (props) => {
         dateBirth: "",
         profileImg: "",
     });
-
-
     const Step = [StepFirst, StepSecond, StepThird, Success][stepState];
 
+    // Error Handler
     const handleError = (errors) => {
         setFormError((prev) => ({ ...prev, ...errors }));
     }
@@ -52,9 +48,10 @@ const Form = (props) => {
         setFormError((prev) => ({ ...prev, [fieldName]: "" }));
     }
 
+    // State changing Next/Back
     const stepBack = () => {
         if (stepState !== 3) {
-            setStepState((prevStep) => (prevStep + 1))
+            setStepState((prevStep) => (prevStep - 1))
         }
     }
 
@@ -64,9 +61,11 @@ const Form = (props) => {
         }
     }
 
+    // Step Indicator
     console.log(stepState)
 
     const stepIndicatorHandler = () => {
+        setStepState(2)
         if (stepState === 0) {
             console.log('neg bn'),
                 setStepIndicator({
