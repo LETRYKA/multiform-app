@@ -9,26 +9,27 @@ const Input = (props) => {
     // Password Show/Hide Logic
     const [show, setShow] = useState(false);
     const [confirmShow, setConfirmShow] = useState(false);
-    const [iconVisiblitiy, setIconVisibility] = useState();
+    const [iconVisibility, setIconVisibility] = useState(false);
+    const [confirmIconVisibility, setConfirmIconVisibility] = useState(false);
 
     const showButtonHandler = () => {
         if (name === "password") {
             setShow(true)
+            setIconVisibility(!iconVisibility);
         }
     }
     const confirmShowButtonHandler = () => {
         if (name === "confirmPassword") {
             setConfirmShow(true)
-            setIconVisibility(!iconVisiblitiy)
+            setConfirmIconVisibility(!confirmIconVisibility);
         }
     }
 
     useEffect(() => {
-        confirmShowButtonHandler()
         showButtonHandler()
+        confirmShowButtonHandler()
     }, []);
 
-    console.log(iconVisiblitiy)
 
     // END
 
@@ -44,8 +45,8 @@ const Input = (props) => {
                 <input type={type} value={value} onChange={handleChange} name={name} placeholder={placeHolder} className="p-4 w-full bg-transparent outline-none text-[black]" />
 
                 {/* Show/Hide */}
-                {show && (<button onClick={showHandler} className="mr-5"><img src="/imgs/eye.svg" alt="" width={30} height={30} /></button>)}
-                {confirmShow && (<button onClick={confirmShowHandler} className="mr-5">{iconVisiblitiy ? <Eye /> : <Eyeoff />}</button>)}
+                {show && (<button onClick={() => { showHandler(); showButtonHandler(); }} className="mr-5">{iconVisibility ? <Eyeoff /> : <Eye />}</button>)}
+                {confirmShow && (<button onClick={() => { confirmShowHandler(); confirmShowButtonHandler(); }} className="mr-5">{confirmIconVisibility ? <Eyeoff /> : <Eye />}</button>)}
                 {/* END */}
 
             </div>

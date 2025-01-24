@@ -14,9 +14,9 @@ const Form = (props) => {
     const { } = props;
     const [stepState, setStepState] = useState(0);
     const [stepIndicator, setStepIndicator] = useState({
-        priColor: "#232323",
-        secColor: "#454545",
-        thirdColor: "#c1c1c1",
+        cardOne: false,
+        cardTwo: false,
+        cardThree: false,
     });
     const [inputValue, setInputValue] = useState({
         firstName: "",
@@ -64,32 +64,37 @@ const Form = (props) => {
         }
     }
 
-    // Step Indicator
-    console.log(inputValue)
-
     const stepIndicatorHandler = () => {
-        setStepState(2)
         if (stepState === 0) {
-            console.log('neg bn'),
-                setStepIndicator({
-                    priColor: "white",
-                    secColor: "black",
-                    thirdColor: "black",
-                });
-        } else (
-            console.log("else ruu orclo"),
             setStepIndicator({
-                priColor: "#232323",
-                secColor: "#454545",
-                thirdColor: "#c1c1c1",
-            })
-        )
+                cardOne: true,
+                cardTwo: false,
+                cardThree: false,
+            });
+        }
+        if (stepState === 1) {
+            setStepIndicator({
+                cardOne: true,
+                cardTwo: true,
+                cardThree: false,
+            });
+        }
+        if (stepState === 2) {
+            setStepIndicator({
+                cardOne: true,
+                cardTwo: true,
+                cardThree: true,
+            });
+        }
     }
 
     useEffect(() => {
         const data = localStorage.getItem("formData");
-        console.log(JSON.parse(data))
     }, []);
+
+    useEffect(() => {
+        stepIndicatorHandler();
+    }, [stepState]);
 
     const animationVariants = {
         enter: { opacity: 0, x: 100 },
@@ -102,11 +107,9 @@ const Form = (props) => {
             <div className="rightSide relative overflow-hidden bg-[url('/imgs/bg.png')] bg-center bg-cover w-full h-full rounded-[20px] flex justify-center items-center">
                 <div className="Grain w-full h-full"></div>
                 <div className="absolute bottom-16 flex flex-col gap-4">
-                    <StepCard stepNum={1} stepDesc={'Setup name, username'} priColor={'white'} secColor={'black'} thirdColor={'black'} />
-                    <button onClick={stepIndicatorHandler}>
-                        <StepCard stepNum={2} stepDesc={'Setup, personal informations'} priColor={stepIndicator.priColor} secColor={stepIndicator.secColor} thirdColor={stepIndicator.thirdColor} />
-                    </button>
-                    <StepCard stepNum={3} stepDesc={'Setup date, profile'} priColor={'#232323'} secColor={'#454545'} thirdColor={'#c1c1c1'} />
+                    <StepCard stepNum={1} stepDesc={'Setup name, username'} priColor={stepIndicator?.cardOne ? "white" : "#232323"} secColor={stepIndicator?.cardOne ? "black" : "#454545"} thirdColor={stepIndicator?.cardOne ? "black" : "#c1c1c1"} />
+                    <StepCard stepNum={1} stepDesc={'Setup privacy forms'} priColor={stepIndicator?.cardTwo ? "white" : "#232323"} secColor={stepIndicator?.cardTwo ? "black" : "#454545"} thirdColor={stepIndicator?.cardTwo ? "black" : "#c1c1c1"} />
+                    <StepCard stepNum={1} stepDesc={'Setup profile'} priColor={stepIndicator?.cardThree ? "white" : "#232323"} secColor={stepIndicator?.cardThree ? "black" : "#454545"} thirdColor={stepIndicator?.cardThree ? "black" : "#c1c1c1"} />
                 </div>
             </div>
 

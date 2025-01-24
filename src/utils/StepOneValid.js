@@ -30,7 +30,6 @@
 // }
 
 export const isStepOneValid = (data) => {
-    console.log('test');
     const { firstName, lastName, userName } = data;
     const errors = {};
     let isValid = true;
@@ -61,8 +60,6 @@ export const isStepOneValid = (data) => {
         errors.userName = "Please enter correct Username!";
         isValid = false;
     }
-
-    console.log(isValid, errors);
 
     return { isValid, errors };
 };

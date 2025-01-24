@@ -2,7 +2,7 @@
 
 export const isStepThirdValid = (data) => {
 
-    const { dateBirth, profileImg } = data;
+    const { dateBirth, profileImg, file } = data;
     const errors = {};
     let isValid = true;
 
@@ -12,13 +12,11 @@ export const isStepThirdValid = (data) => {
         isValid = false;
     }
 
+    // Validate Profilei mg
     if (profileImg === "") {
-        errors.profileImg = "Test"
+        errors.profileImg = "Please enter your Profile image!";
         isValid = false;
     }
-
-
-    console.log(isValid, errors);
 
     return { isValid, errors };
 };

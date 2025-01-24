@@ -46,7 +46,5 @@ export const isStepTwoValid = (data) => {
         isValid = false;
     }
 
-    console.log(isValid, errors);
-
     return { isValid, errors };
 };
