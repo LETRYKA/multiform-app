@@ -108,8 +108,8 @@ const Form = (props) => {
                 <div className="Grain w-full h-full"></div>
                 <div className="absolute bottom-16 flex flex-col gap-4">
                     <StepCard stepNum={1} stepDesc={'Setup name, username'} priColor={stepIndicator?.cardOne ? "white" : "#232323"} secColor={stepIndicator?.cardOne ? "black" : "#454545"} thirdColor={stepIndicator?.cardOne ? "black" : "#c1c1c1"} />
-                    <StepCard stepNum={1} stepDesc={'Setup privacy forms'} priColor={stepIndicator?.cardTwo ? "white" : "#232323"} secColor={stepIndicator?.cardTwo ? "black" : "#454545"} thirdColor={stepIndicator?.cardTwo ? "black" : "#c1c1c1"} />
-                    <StepCard stepNum={1} stepDesc={'Setup profile'} priColor={stepIndicator?.cardThree ? "white" : "#232323"} secColor={stepIndicator?.cardThree ? "black" : "#454545"} thirdColor={stepIndicator?.cardThree ? "black" : "#c1c1c1"} />
+                    <StepCard stepNum={2} stepDesc={'Setup privacy forms'} priColor={stepIndicator?.cardTwo ? "white" : "#232323"} secColor={stepIndicator?.cardTwo ? "black" : "#454545"} thirdColor={stepIndicator?.cardTwo ? "black" : "#c1c1c1"} />
+                    <StepCard stepNum={3} stepDesc={'Setup profile'} priColor={stepIndicator?.cardThree ? "white" : "#232323"} secColor={stepIndicator?.cardThree ? "black" : "#454545"} thirdColor={stepIndicator?.cardThree ? "black" : "#c1c1c1"} />
                 </div>
             </div>
 
