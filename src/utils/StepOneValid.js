@@ -39,7 +39,7 @@ export const isStepOneValid = (data) => {
         errors.firstName = "Please enter your First Name!";
         isValid = false;
     } else if (firstName.length <= 1) {
-        errors.firstName = "Please enter correct First Name!";
+        errors.firstName = "Please enter valid First Name!";
         isValid = false;
     }
 
@@ -48,7 +48,7 @@ export const isStepOneValid = (data) => {
         errors.lastName = "Please enter your Last Name!";
         isValid = false;
     } else if (lastName.length <= 1) {
-        errors.lastName = "Please enter correct Last Name!";
+        errors.lastName = "Please enter valid Last Name!";
         isValid = false;
     }
 
@@ -57,7 +57,7 @@ export const isStepOneValid = (data) => {
         errors.userName = "Please enter your Username!";
         isValid = false;
     } else if (userName.length <= 1) {
-        errors.userName = "Please enter correct Username!";
+        errors.userName = "Please enter valid Username!";
         isValid = false;
     }
 

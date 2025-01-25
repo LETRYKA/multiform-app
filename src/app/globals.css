@@ -48,8 +48,6 @@ body {
   animation: animateGrain 8s steps(10) infinite;
 }
 
-
-
 @keyframes animateGrain {
 
   0%,
@@ -97,4 +95,28 @@ body {
     transform: translate(-15%, -20%)
   }
 
+}
+
+.react-international-phone-input-container .react-international-phone-input {
+  background-color: transparent !important;
+  border: transparent !important;
+  font-size: 15px !important;
+}
+
+.react-international-phone-country-selector-button {
+  background-color: transparent !important;
+  border: transparent !important;
+}
+
+.react-international-phone-country-selector-dropdown {
+  border: none !important;
+  padding: 15px 0 0 10px !important;
+  border-radius: 10px !important;
+  top: 60px !important;
+  left: -20px !important;
+  box-shadow: none !important;
+}
+
+.react-international-phone-country-selector-dropdown__list-item {
+  margin-bottom: 8px;
 }

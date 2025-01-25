@@ -42,7 +42,7 @@ const Input = (props) => {
             <div className="w-full h-14 border rounded-[10px] flex justify-start items-center shadow-sm">
                 <span className="icon ml-4">{InputIcon}</span>
                 <div className="h-4/6 border border-[0.8px] ml-4"></div>
-                <input type={type} value={value} onChange={handleChange} name={name} placeholder={placeHolder} className="p-4 w-full bg-transparent outline-none text-[black]" />
+                <input type={type} value={value} onChange={handleChange} name={name} maxLength="30" placeholder={placeHolder} className="p-4 w-full bg-transparent outline-none text-[black]" />
 
                 {/* Show/Hide */}
                 {show && (<button onClick={() => { showHandler(); showButtonHandler(); }} className="mr-5">{iconVisibility ? <Eyeoff /> : <Eye />}</button>)}
@@ -55,7 +55,7 @@ const Input = (props) => {
                     <p className="text-[red] text-xs mt-2">{errors[name]}</p>
                 )
             }
-        </div >
+        </div>
     );
 };
 

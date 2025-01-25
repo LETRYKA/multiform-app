@@ -74,8 +74,6 @@ const StepThird = (props) => {
         setConfirmShow(!show)
     }
 
-    console.log(inputValue.profileImg)
-
     return (
         <div className="w-[550px] flex flex-col justify-center items-center">
             <img src="/imgs/logo.png" alt="" width={60} height={60} />

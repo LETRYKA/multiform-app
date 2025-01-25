@@ -3,7 +3,7 @@
 export const isStepTwoValid = (data) => {
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phonePattern = /^\+?\d{8}$/;
+    const phonePattern = /^\+?\d{8,15}$/;
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
     const { email, phoneNumber, password, confirmPassword } = data;
@@ -15,7 +15,7 @@ export const isStepTwoValid = (data) => {
         errors.email = "Please enter your Email address!";
         isValid = false;
     } else if (!emailPattern.test(email)) {
-        errors.email = "Please enter correct Email address!";
+        errors.email = "Please enter valid Email address!";
         isValid = false;
     }
 
@@ -24,7 +24,7 @@ export const isStepTwoValid = (data) => {
         errors.phoneNumber = "Please enter your Phone Number!";
         isValid = false;
     } else if (!phonePattern.test(phoneNumber)) {
-        errors.phoneNumber = "Please enter correct Phone Number!";
+        errors.phoneNumber = "Please enter valid Phone Number!";
         isValid = false;
     }
 
@@ -33,7 +33,7 @@ export const isStepTwoValid = (data) => {
         errors.password = "Please enter your Password!";
         isValid = false;
     } else if (!passwordPattern.test(password)) {
-        errors.password = `Please enter correct Password`;
+        errors.password = `Please enter valid Password`;
         isValid = false;
     }
 
