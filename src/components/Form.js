@@ -23,7 +23,6 @@ const Form = (props) => {
         lastName: "",
         userName: "",
         email: "",
-        countryNumber: "",
         phoneNumber: "",
         password: "",
         confirmPassword: "",
@@ -35,7 +34,6 @@ const Form = (props) => {
         lastName: "",
         userName: "",
         email: "",
-        countryNumber: "",
         phoneNumber: "",
         password: "",
         confirmPassword: "",
@@ -103,6 +101,7 @@ const Form = (props) => {
         center: { opacity: 1, x: 0 },
         exit: { opacity: 0, x: -100 }
     };
+    console.log(inputValue)
 
     return (
         <div className="w-screen h-screen bg-[#F9F7F7] p-2 flex justify-between gap-2">

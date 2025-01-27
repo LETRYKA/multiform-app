@@ -123,7 +123,7 @@ const StepSecond = (props) => {
                         {errors?.phoneNumber && (<p className="text-[red] text-base font-bold ml-2">*</p>)}
                     </div>
                     <div className="w-full h-14 border rounded-[10px] flex justify-start items-center shadow-sm">
-                        <PhoneInput defaultCountry="mn" type="text" value={inputValue.phoneNumber} onChange={(value, countryData) => { handleChange({ target: { name: "phoneNumber", value: value, }, }); setInputValue((prev) => ({ ...prev, countryNumber: countryData.dialCode, })); }} name="phoneNumber" maxLength="30" placeholder="eg. +976 9999-9999" style={{ backgroundColor: 'transparent', }} className="p-4" />
+                        <PhoneInput defaultCountry="mn" type="text" value={inputValue.phoneNumber} onChange={(value, countryData) => { handleChange({ target: { name: "phoneNumber", value: value, }, }) }} name="phoneNumber" maxLength="30" placeholder="eg. +976 9999-9999" style={{ backgroundColor: 'transparent', }} className="p-4" />
                     </div>
                     {errors?.phoneNumber && errors.phoneNumber.length > 0 && (<p className="text-[red] text-xs mt-2">{errors.phoneNumber}</p>)}
                 </div>
