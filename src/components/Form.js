@@ -90,6 +90,8 @@ const Form = (props) => {
 
     useEffect(() => {
         const data = localStorage.getItem("formData");
+        const localData = JSON.parse(data)
+        setInputValue(localData)
     }, []);
 
     useEffect(() => {
