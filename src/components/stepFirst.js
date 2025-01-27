@@ -68,7 +68,7 @@ const StepFirst = (props) => {
                     inputLabel={"Last Name"}
                     showHandler={showHandler}
                     InputIcon={<User />}
-                    placeHolder={"eg. Carl"}
+                    placeHolder={"eg. Sheila"}
                     value={inputValue.lastName}
                     name="lastName"
                     handleChange={handleChange}
